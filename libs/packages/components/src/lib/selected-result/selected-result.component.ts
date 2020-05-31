@@ -25,7 +25,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: SDSSelectedItemModel;
+  public model:any[];
 
 
   /**
@@ -53,15 +53,15 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    */
   removeItem(item: object) {
     if (!this.disabled) {
-      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model.items);
+      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
       this.propogateChange(this.model);
       this.onTouchedCallback();
     }
   }
 
   writeValue(obj: any): void {
-    if (obj instanceof SDSSelectedItemModel) {
-      this.model = obj as SDSSelectedItemModel;
+    if (obj) {
+      this.model = obj;
     }
   }
 

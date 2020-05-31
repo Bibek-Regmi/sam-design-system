@@ -46,7 +46,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: SDSSelectedItemModel;
+  public model: any[] = [];
 
   public disabled: boolean;
 
@@ -79,18 +79,18 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-    if (value instanceof SDSSelectedItemModel && value.items && value.items.length && this.model.items !== value.items) {
-      this.model.items = [...value.items];
+    if (value && value.length && this.model !== value) {
+      this.model = [...value];
       this.cd.markForCheck();
     }
-    else if(value && value.length && this.model.items !== value) {
-      this.model.items = value;
+    else if(value && value.length && this.model !== value) {
+      this.model = value;
       this.cd.markForCheck();
     } else {
-      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {
-        this.model = new SDSSelectedItemModel();
+      if(!this.model || !(this.model)) {
+        this.model = [];
       }
-      this.model.items = value && value.items ? value.items : [];
+      this.model = value ? value : [];
       this.cd.markForCheck();
     }
   }
@@ -108,7 +108,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   // Helper method to return a new instance of an array that contains our items
   getModel() {
-    return [...this.model.items];
+    return [...this.model];
   }
 
   // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)

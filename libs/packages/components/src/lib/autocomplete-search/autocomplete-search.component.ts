@@ -10,7 +10,6 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
-import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import {
   SelectionMode,
   SDSSelectedItemModelHelper
@@ -48,7 +47,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: SDSSelectedItemModel;
+  public model: any[] =[];
 
   /**
    * Configuration for the Autocomplete control
@@ -194,13 +193,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private focusRemoved() {
     if (this.configuration) {
       if (this.configuration.selectionMode === SelectionMode.SINGLE) {
-        if (this.model.items.length > 0) {
+        if (this.model.length > 0) {
           if (this.inputValue.length === 0) {
-            SDSSelectedItemModelHelper.clearItems(this.model.items);
+            SDSSelectedItemModelHelper.clearItems(this.model);
             this.propogateChange(this.model);
           } else {
             this.inputValue = this.getObjectValue(
-              this.model.items[0],
+              this.model[0],
               this.configuration.primaryTextField
             );
           }
@@ -290,7 +289,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     );
 
     setTimeout(() => {
-      this.model.items = [...this.items];
+      this.model = [...this.items];
       this.propogateChange(this.model);
     }, 0);
     let message = this.getObjectValue(
@@ -349,9 +348,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
                 item[this.configuration.primaryTextField] === this.inputValue;
             }
           }
-          if (this.model.items.length > 0 && !foundItem) {
-            for (var i = 0; i < this.model.items.length && !foundItem; i++) {
-              let item = this.model.items[i];
+          if (this.model.length > 0 && !foundItem) {
+            for (var i = 0; i < this.model.length && !foundItem; i++) {
+              let item = this.model[i];
               foundItem =
                 item[this.configuration.primaryTextField] === this.inputValue;
             }
@@ -523,15 +522,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    if (obj instanceof SDSSelectedItemModel) {
-      this.model = obj as SDSSelectedItemModel;
+    if (obj) {
+      this.model = obj;
       this._changeDetectorRef.markForCheck();
-      if (this.model.items.length === 0) {
+      if (this.model.length === 0) {
         this.inputValue = '';
       } else {
         if (this.configuration.selectionMode === SelectionMode.SINGLE) {
           this.inputValue = this.getObjectValue(
-            this.model.items[0],
+            this.model[0],
             this.configuration.primaryTextField
           );
         }
