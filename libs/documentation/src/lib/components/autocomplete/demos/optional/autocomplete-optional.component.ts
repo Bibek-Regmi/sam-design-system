@@ -21,13 +21,20 @@ export class AutocompleteOptional implements OnInit {
   public settings5 = new SDSAutocompletelConfiguration();
   public settings6 = new SDSAutocompletelConfiguration();
   public disableMSettings = new SDSAutocompletelConfiguration();
-  public model = new SDSSelectedItemModel();
-  public model2 = new SDSSelectedItemModel();
-  public model3 = new SDSSelectedItemModel();
-  public model4 = new SDSSelectedItemModel();
-  public model5 = new SDSSelectedItemModel();
-  public model6 = new SDSSelectedItemModel();
-  public disableMModel = new SDSSelectedItemModel();
+  // public model = new SDSSelectedItemModel();
+  // public model2 = new SDSSelectedItemModel();
+  // public model3 = new SDSSelectedItemModel();
+  // public model4 = new SDSSelectedItemModel();
+  // public model5 = new SDSSelectedItemModel();
+  // public model6 = new SDSSelectedItemModel();
+  // public disableMModel = new SDSSelectedItemModel();
+  public model = [];
+  public model2 = [];
+  public model3 = [];
+  public model4 = [];
+  public model5 = [];
+  public model6 = [];
+  public disableMModel = [];
 
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
@@ -100,11 +107,11 @@ export class AutocompleteOptional implements OnInit {
     this.disableMSettings.selectionMode = SelectionMode.MULTIPLE;
     this.disableMSettings.autocompletePlaceHolderText = 'Enter text';
 
-    this.model6.items.push(this.data[0]);
-    this.disableMModel.items.push(this.data[0]);
-    this.disableMModel.items.push(this.data[3]);
+    this.model6.push(this.data[0]);
+    this.disableMModel.push(this.data[0]);
+    this.disableMModel.push(this.data[3]);
 
-    this.model5.items.push(this.data[0]);
-    this.model5.items.push(this.data[1]);
+    this.model5.push(this.data[0]);
+    this.model5.push(this.data[1]);
   }
 }

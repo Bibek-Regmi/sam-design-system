@@ -10,6 +10,7 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
+import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import {
   SelectionMode,
   SDSSelectedItemModelHelper
@@ -47,7 +48,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: any[] =[];
+  public model: any[];
 
   /**
    * Configuration for the Autocomplete control
@@ -288,10 +289,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.items
     );
 
-    setTimeout(() => {
-      this.model = [...this.items];
+    // setTimeout(() => {
+      this.model = this.items;
       this.propogateChange(this.model);
-    }, 0);
+    // }, 0);
     let message = this.getObjectValue(
       item,
       this.configuration.primaryTextField
@@ -521,11 +522,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.srOnlyText = message;
   }
 
-  writeValue(obj: any): void {
-    if (obj) {
+  writeValue(obj): void {
+    // if (obj instanceof any[]) {
       this.model = obj;
+      if(this.model) {
       this._changeDetectorRef.markForCheck();
-      if (this.model.length === 0) {
+      if (this.model && this.model.length === 0) {
         this.inputValue = '';
       } else {
         if (this.configuration.selectionMode === SelectionMode.SINGLE) {

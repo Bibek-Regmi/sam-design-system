@@ -18,12 +18,17 @@ export class AutocompleteSampleComponent implements OnInit {
   public settings4 = new SDSAutocompletelConfiguration();
   public settings5 = new SDSAutocompletelConfiguration();
 
-  public model = new SDSSelectedItemModel();
-  public model2 = new SDSSelectedItemModel();
-  public model3 = new SDSSelectedItemModel();
-  public model4 = new SDSSelectedItemModel();
-  public model5 = new SDSSelectedItemModel();
+  // public model = new SDSSelectedItemModel();
+  // public model2 = new SDSSelectedItemModel();
+  // public model3 = new SDSSelectedItemModel();
+  // public model4 = new SDSSelectedItemModel();
+  // public model5 = new SDSSelectedItemModel();
 
+  public model = [];
+  public model2 = [];
+  public model3 = [];
+  public model4 = [];
+  public model5 = [];
 
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
@@ -87,11 +92,15 @@ export class AutocompleteSampleComponent implements OnInit {
 
 
 
-    this.model.items.push(this.data[0]);
-    this.model5.items.push(this.data[0]);
-    this.model5.items.push(this.data[1]);
-    this.model3.items.push(this.data[0]);
+    // this.model.items.push(this.data[0]);
+    // this.model5.items.push(this.data[0]);
+    // this.model5.items.push(this.data[1]);
+    // this.model3.items.push(this.data[0]);
 
+    this.model.push(this.data[0]);
+    this.model5.push(this.data[0]);
+    this.model5.push(this.data[1]);
+    this.model3.push(this.data[0]);
   }
 
 

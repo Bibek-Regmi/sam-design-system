@@ -17,6 +17,8 @@ export class AutocompleteBasic implements OnInit {
   public settings = new SDSAutocompletelConfiguration();
   public settings3 = new SDSAutocompletelConfiguration();
 
+  // public model = new SDSSelectedItemModel();
+  // public model3 = new SDSSelectedItemModel();
   public model = [];
   public model3 = [];
 

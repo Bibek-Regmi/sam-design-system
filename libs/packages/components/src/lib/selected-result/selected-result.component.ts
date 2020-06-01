@@ -25,7 +25,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model:any[];
+  public model: any[];
 
 
   /**
@@ -59,10 +59,10 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
     }
   }
 
-  writeValue(obj: any): void {
-    if (obj) {
+  writeValue(obj): void {
+    // if (obj instanceof SDSSelectedItemModel) {
       this.model = obj;
-    }
+    // }
   }
 
   registerOnChange(fn: any): void {

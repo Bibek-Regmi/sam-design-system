@@ -46,7 +46,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: any[] = [];
+  // public model: SDSSelectedItemModel;
+  public model: any[];
 
   public disabled: boolean;
 
@@ -87,7 +88,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
       this.model = value;
       this.cd.markForCheck();
     } else {
-      if(!this.model || !(this.model)) {
+      if(!this.model) {
         this.model = [];
       }
       this.model = value ? value : [];
@@ -98,6 +99,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   // Method that is fired when the child component event notifies us that the items array has been modified within the child component
   updateItems($event) {
     this.updateModel();
+    console.log(this.model);
+    // this.cd.markForCheck();
   }
 
   // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)
