@@ -23,7 +23,7 @@ export class FormlyInputComponent implements OnInit {
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteModel = new SDSSelectedItemModel();
+  public autocompleteModel = [];
 
   private data = SampleAutocompleteData;
   

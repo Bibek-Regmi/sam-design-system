@@ -18,7 +18,7 @@ export class FormlyAutocompleteTag  {
   model = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteModel = new SDSSelectedItemModel();
+  public autocompleteModel = [];
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',

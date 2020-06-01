@@ -18,7 +18,7 @@ interface Model {
 export class FormlyConditionalComponent implements OnInit {
   results: any;
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteModel = new SDSSelectedItemModel();
+  public autocompleteModel = [];
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};

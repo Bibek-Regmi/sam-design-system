@@ -24,13 +24,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/autocomplete-basic.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/basic'
   },
-  // optional: {
-  //   title: 'Optional Autocomplete',
-  //   type: AutocompleteOptional,
-  //   code: require('!!raw-loader!./demos/optional/autocomplete-optional.component'),
-  //   markup: require('!!raw-loader!./demos/optional/autocomplete-optional.component.html'),
-  //   path: 'libs/documentation/src/lib/components/autocomplete/demos/optional'
-  // }
+  optional: {
+    title: 'Optional Autocomplete',
+    type: AutocompleteOptional,
+    code: require('!!raw-loader!./demos/optional/autocomplete-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/autocomplete-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/optional'
+  }
 };
 
 export const ROUTES = [
