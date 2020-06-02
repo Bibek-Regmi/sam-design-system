@@ -282,15 +282,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item
    */
   public selectItem(item: object): void {
+    console.log('select item called');
     SDSSelectedItemModelHelper.addItem(
       item,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
-      this.items
+      this.model
     );
 
     // setTimeout(() => {
-      this.model = this.items;
+      // this.model = this.items;
       this.propogateChange(this.model);
     // }, 0);
     let message = this.getObjectValue(
