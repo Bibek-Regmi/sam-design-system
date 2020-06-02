@@ -17,6 +17,7 @@ export class FormlyAutocompleteMinCharacter  {
   model = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
+  // public autocompleteModel = new SDSSelectedItemModel();
   public autocompleteModel = [];
 
   fields: FormlyFieldConfig[] = [

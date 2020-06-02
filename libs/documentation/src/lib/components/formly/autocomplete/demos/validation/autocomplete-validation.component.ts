@@ -25,6 +25,7 @@ export class FormlyAutocompleteValidation {
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
+  // public autocompleteModel = new SDSSelectedItemModel();
   public autocompleteModel = [];
   private data = SampleAutocompleteData;
   public filterChange$ = new BehaviorSubject<object>(null);

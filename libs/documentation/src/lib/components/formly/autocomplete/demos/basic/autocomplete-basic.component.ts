@@ -21,8 +21,9 @@ export class FormlyAutocompleteBasic implements OnInit {
   model = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteModel = [];
+  // public autocompleteModel = new SDSSelectedItemModel();
   private data = SampleAutocompleteData;
+  public autocompleteModel = [];
   public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
     {
@@ -112,7 +113,7 @@ export class FormlyAutocompleteBasic implements OnInit {
       }
     ];
 
-    const newObjModel = new SDSSelectedItemModel(newModel);
-    this.form.get('filters.firstName').patchValue(newObjModel.items);
+    const newObjModel = newModel;
+    this.form.get('filters.firstName').patchValue(newObjModel);
   }
 }

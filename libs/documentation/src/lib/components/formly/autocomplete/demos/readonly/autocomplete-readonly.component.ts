@@ -18,6 +18,7 @@ export class FormlyAutocompleteReadOnly  {
   model = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
+  // public autocompleteModel = new SDSSelectedItemModel();
   public autocompleteModel = [];
   fields: FormlyFieldConfig[] = [
     {
