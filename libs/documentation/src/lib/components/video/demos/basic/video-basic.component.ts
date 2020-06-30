@@ -8,4 +8,5 @@ import { VideoPlayerSampleData } from './video-player-sample-data';
 
 export class VideoBasic {
   public data = VideoPlayerSampleData;
+  corssoriginValue = 'anonymous'
 }
